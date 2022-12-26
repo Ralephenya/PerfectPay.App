@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="PerfectPay.MVVM.Views.PerfectPayPage"
+             Title="PerfectPayPage">
+
+    <ContentPage.Resources>
+        <Color x:Key="TextColor">#999999</Color>
+        <Color x:Key="ValueText">#FFFFFF</Color>
+        <Color x:Key="BackgoundColorApp">#4d4d4d</Color>
+    </ContentPage.Resources>
+    <Grid 
+        BackgroundColor="#0d0d0d" 
+        RowDefinitions=".40*,.60*"
+        Padding="10">
+
+        <Grid Grid.Row="0" 
+              BackgroundColor="{StaticResource BackgoundColorApp}" 
+              RowDefinitions=".15*,.70*,.15*"
+              ColumnDefinitions="*,.01*,*">
+
+
+
+            <Label Grid.Row="0" 
+                   Grid.ColumnSpan="3"
+                   TextColor="{StaticResource ValueText}"
+                   HorizontalTextAlignment="Center"
+                   Margin="15"
+                   Text="TOTAL P/PERSON"/>
+
+            <Label 
+                Grid.Row="1" 
+                Grid.Column="0" 
+                Text="$0.00" 
+                TextColor="White"
+                FontSize="Title"
+                FontAttributes="Bold"
+                VerticalTextAlignment="Center"
+                HorizontalTextAlignment="Center"/>
+
+
+            <Border Grid.Row="1" Grid.Column="1"/>
+
+            <VerticalStackLayout Grid.Row="1" Grid.Column="2" 
+                                 VerticalOptions="Center" 
+                                 HorizontalOptions="Center">
+
+
+                <Label 
+                    Text="SUBTOTAL" 
+                    TextColor="{StaticResource TextColor}"/>
+
+
+                <Label Text="$50.00"
+                       TextColor="{StaticResource ValueText}"
+                       Margin="0,0,0,20"/>
+
+
+                <Label Text="TIP" 
+                       TextColor="{StaticResource TextColor}"/>
+
+
+                <Label Text="$50.00" 
+                       TextColor="{StaticResource ValueText}"/>
+
+            </VerticalStackLayout>
+
+        </Grid>
+
+
+
+        <Grid Grid.Row="1" 
+              RowDefinitions=".25*,.25*,.25*,.25*" 
+              ColumnDefinitions=".40*,.60*">
+
+
+            <Label
+                Grid.Row="0"
+                Grid.Column="0"
+                Text="Enter your bill $"
+                TextColor="White"
+                VerticalOptions="Center"
+                VerticalTextAlignment="Center"/>
+
+            <Entry
+VerticalOptions="Center"                
+                   Grid.Row="0" 
+                   Grid.Column="1"
+                Keyboard="Numeric"
+                Placeholder="0.0"
+                TextColor="{StaticResource ValueText}"
+                   BackgroundColor="{StaticResource BackgoundColorApp}"/>
+
+
+            <Label
+                VerticalOptions="Center"
+                Grid.Row="1"
+                Grid.Column="0"
+                Text="Choose your tip $"
+                TextColor="White"
+                VerticalTextAlignment="Center"/>
+
+
+            <HorizontalStackLayout 
+                Grid.Row="1" 
+                Grid.Column="1"
+                Spacing="10"
+                VerticalOptions="Center">
+                <Button 
+                    BackgroundColor="Purple" 
+                    Text="10%"
+                    TextColor="{StaticResource ValueText}"
+                    FontAttributes="Bold">
+
+                </Button>
+
+                <Button 
+                    BackgroundColor="Purple"
+                    Text="15%"
+                    TextColor="{StaticResource ValueText}"
+                    FontAttributes="Bold"
+                    >
+                </Button>
+
+                <Button
+                    BackgroundColor="Purple" 
+                    Text="20%"
+                    TextColor="{StaticResource ValueText}"
+                    FontAttributes="Bold"
+                    >
+                    
+                </Button>
+
+            </HorizontalStackLayout>
+
+            <Label
+                Grid.Row="2"
+                Grid.Column="0"
+                Text="Tip: 0%"
+                TextColor="White"
+                VerticalOptions="Center"
+                VerticalTextAlignment="Center"/>
+
+
+            <Slider Grid.Row="2" 
+                    Grid.Column="1" 
+                    Minimum="0" 
+                    VerticalOptions="Center"
+                    Maximum="100"/>
+
+            <Label
+                Grid.Row="3"
+                Grid.Column="0"
+                Text="Split the total"
+                TextColor="White"
+                VerticalOptions="Center"
+                VerticalTextAlignment="Center"/>
+
+
+            <HorizontalStackLayout
+                Grid.Row="3"
+                Grid.Column="1"
+                HorizontalOptions="Center"
+                VerticalOptions="Center">
+                <Button
+                    x:Name="btnMinus"
+                    Text="-"
+                    WidthRequest="70" />
+                <Label
+                    x:Name="lblNoPerons"
+                    Margin="-5,0,-5,0"
+                    BackgroundColor="{StaticResource BackgoundColorApp}"
+                    FontSize="25"
+                    HeightRequest="50"
+                    HorizontalOptions="Center"
+                    HorizontalTextAlignment="Center"
+                    Text="1"
+                    TextColor="{StaticResource ValueText}"
+                    VerticalOptions="Center"
+                    VerticalTextAlignment="Center"
+                    WidthRequest="100" />
+                <Button
+                    x:Name="btnPlus"
+                    Text="+"
+                    WidthRequest="70" />
+            </HorizontalStackLayout>
+
+        </Grid>
+
+
+    </Grid>
+</ContentPage>
