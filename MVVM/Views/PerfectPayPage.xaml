@@ -31,7 +31,7 @@
             <Label 
                 Grid.Row="1" 
                 Grid.Column="0" 
-                Text="$0.00" 
+                Text="{Binding TotalAmount,StringFormat='{0:C}'}" 
                 TextColor="White"
                 FontSize="Title"
                 FontAttributes="Bold"
@@ -51,7 +51,7 @@
                     TextColor="{StaticResource TextColor}"/>
 
 
-                <Label Text="$50.00"
+                <Label Text="{Binding SubTotalAmount,StringFormat='{0:C}'}"
                        TextColor="{StaticResource ValueText}"
                        Margin="0,0,0,20"/>
 
@@ -60,7 +60,7 @@
                        TextColor="{StaticResource TextColor}"/>
 
 
-                <Label Text="$50.00" 
+                <Label Text="{Binding TipAmount,StringFormat='{0:C}'}" 
                        TextColor="{StaticResource ValueText}"/>
 
             </VerticalStackLayout>
@@ -83,13 +83,14 @@
                 VerticalTextAlignment="Center"/>
 
             <Entry
-VerticalOptions="Center"                
-                   Grid.Row="0" 
-                   Grid.Column="1"
+                VerticalOptions="Center"                
+                Grid.Row="0" 
+                Grid.Column="1"
                 Keyboard="Numeric"
-                Placeholder="0.0"
+                Text="{Binding BillAmount,StringFormat='{0:C}'}"
                 TextColor="{StaticResource ValueText}"
-                   BackgroundColor="{StaticResource BackgoundColorApp}"/>
+                BackgroundColor="{StaticResource BackgoundColorApp}"
+                />
 
 
             <Label
@@ -109,26 +110,37 @@ VerticalOptions="Center"
                 <Button 
                     BackgroundColor="Purple" 
                     Text="10%"
+                    x:Name="tip10"
                     TextColor="{StaticResource ValueText}"
-                    FontAttributes="Bold">
+                    FontAttributes="Bold"
+                    Command="{Binding TipFixedPercentageCommand}"
+                    CommandParameter="{Binding Source={x:Reference tip10}, Path=Text}">
 
                 </Button>
+
 
                 <Button 
-                    BackgroundColor="Purple"
+                    BackgroundColor="Purple" 
                     Text="15%"
+                    x:Name="tip15"
                     TextColor="{StaticResource ValueText}"
                     FontAttributes="Bold"
-                    >
+                    Command="{Binding TipFixedPercentageCommand}"
+                    CommandParameter="{Binding Source={x:Reference tip15}, Path=Text}">
+
                 </Button>
 
-                <Button
+
+
+                <Button 
                     BackgroundColor="Purple" 
                     Text="20%"
+                    x:Name="tip20"
                     TextColor="{StaticResource ValueText}"
                     FontAttributes="Bold"
-                    >
-                    
+                    Command="{Binding TipFixedPercentageCommand}"
+                    CommandParameter="{Binding Source={x:Reference tip20}, Path=Text}">
+
                 </Button>
 
             </HorizontalStackLayout>
@@ -146,6 +158,7 @@ VerticalOptions="Center"
                     Grid.Column="1" 
                     Minimum="0" 
                     VerticalOptions="Center"
+                    Value="{Binding TipPercentage}"
                     Maximum="100"/>
 
             <Label
@@ -165,7 +178,8 @@ VerticalOptions="Center"
                 <Button
                     x:Name="btnMinus"
                     Text="-"
-                    WidthRequest="70" />
+                    WidthRequest="70" 
+                    Command="{Binding RemoveAnotherPersonCommand}"/>
                 <Label
                     x:Name="lblNoPerons"
                     Margin="-5,0,-5,0"
@@ -174,7 +188,7 @@ VerticalOptions="Center"
                     HeightRequest="50"
                     HorizontalOptions="Center"
                     HorizontalTextAlignment="Center"
-                    Text="1"
+                    Text="{Binding NumberOfPeople}"
                     TextColor="{StaticResource ValueText}"
                     VerticalOptions="Center"
                     VerticalTextAlignment="Center"
@@ -182,7 +196,8 @@ VerticalOptions="Center"
                 <Button
                     x:Name="btnPlus"
                     Text="+"
-                    WidthRequest="70" />
+                    WidthRequest="70"
+                    Command="{Binding AddAnotherPersonCommand}"/>
             </HorizontalStackLayout>
 
         </Grid>
